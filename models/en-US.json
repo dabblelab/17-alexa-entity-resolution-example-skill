@@ -1,0 +1,76 @@
+{
+  "interactionModel": {
+    "languageModel": {
+      "invocationName": "voice ratings",
+      "types": [
+        {
+          "name": "RATING",
+          "values": [
+            {
+              "id": "1",
+              "name": {
+                "value": "poor",
+                "synonyms": [
+                  "awful",
+                  "awfully",
+                  "terrible"
+                ]
+              }
+            },
+            {
+              "id" : "2",
+              "name" : {
+                "value" : "good",
+                "synonyms" : [
+                  "good",
+                  "average",
+                  "decent"
+                ]
+              } 
+            },
+            {
+              "id" : "3",
+              "name" : {
+                "value" : "great",
+                "synonyms" : [
+                  "awesome",
+                  "fabulous",
+                  "outstanding",
+                  "awfully good"
+                ]
+              } 
+            }
+          ]
+        }
+      ],
+      "intents": [
+        {
+          "name": "AMAZON.CancelIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.HelpIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.StopIntent",
+          "samples": []
+        },
+        {
+          "name": "RatingIntent",
+          "slots": [
+            {
+              "name": "rating",
+              "type": "RATING"
+            }
+          ],
+          "samples": [
+            "{rating}",
+            "I think you're doing {rating}",
+            "I'd say you're doing {rating}"
+          ]
+        }
+      ]
+    }
+  }
+}
