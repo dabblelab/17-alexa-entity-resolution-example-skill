@@ -26,6 +26,8 @@ const RatingIntentHandler = {
   },
   handle(handlerInput) {
 
+    const responseBuilder = handlerInput.responseBuilder;
+    
     let speechText = `I'm not sure what that means.`;
     const ratingSlot = handlerInput.requestEnvelope.request.intent.slots.rating.value;
 
@@ -39,10 +41,11 @@ const RatingIntentHandler = {
       } 
 
     } else {
-      speechText = `I'm not sure what that means.`
+      speechText = `I'm not sure what that means. Could you say that another way?`
+      responseBuilder.reprompt(`Could you say that another way?`)
     }
 
-    return handlerInput.responseBuilder
+    return responseBuilder
       .speak(speechText)
       .getResponse();
   },
