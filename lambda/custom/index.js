@@ -8,13 +8,13 @@ const LaunchRequestHandler = {
     return handlerInput.requestEnvelope.request.type === 'LaunchRequest';
   },
   handle(handlerInput) {
-    const speechText = 'Hello there. How would you say we\'re doing as a company?';
-    const repromptText = 'Can you tell me how you think we\'re doing?';
+    const speechText = `What is one word you'd use to describe our business?`;
+    const repromptText = `With one word how would you describe our business?`;
 
     return handlerInput.responseBuilder
       .speak(speechText)
       .reprompt(repromptText)
-      .withSimpleCard('Example Card Title', "Example card body content.")
+      //.withSimpleCard('Example Card Title', "Example card body content.")
       .getResponse();
   },
 };
@@ -27,22 +27,38 @@ const RatingIntentHandler = {
   handle(handlerInput) {
 
     const responseBuilder = handlerInput.responseBuilder;
-    
-    let speechText = `I'm not sure what that means.`;
-    const ratingSlot = handlerInput.requestEnvelope.request.intent.slots.rating.value;
 
-    if (ratingSlot) { 
+    let speechText = `I'm not sure what that means. Could you say that another way?`;
+
+    const ratingSlot = Alexa.getSlotValue(handlerInput.requestEnvelope, "rating"); // handlerInput.requestEnvelope.request.intent.slots.rating.value;
+
+    if (ratingSlot) {
 
       let resolution = handlerInput.requestEnvelope.request.intent.slots.rating.resolutions.resolutionsPerAuthority[0];
 
       if (resolution.status.code === "ER_SUCCESS_MATCH") {
-        let id = resolution.values[0].value.id;
-        speechText = `I heard you say we're doing ${ratingSlot}. On a scale of one to three, that's a ${id}.`;
-      } 
-
-    } else {
-      speechText = `I'm not sure what that means. Could you say that another way?`
-      responseBuilder.reprompt(`Could you say that another way?`)
+        let rating = resolution.values[0].value.id;
+        switch (rating) {
+          case "1":
+            speechText = `I'm very sorry to hear that. On a scale of one to five we think ${ratingSlot} is a ${rating}. We really need to improve. Thanks for your honest feedback.`;
+            break;
+          case "2":
+            speechText = `I'm very sorry to hear that. On a scale of one to five we think  ${ratingSlot} is a ${rating}. We really need to improve. Thanks for your honest feedback.`;
+            break;
+          case "3":
+            speechText = `Thanks for your candid feedback. On a scale of one to five we think ${ratingSlot} is a ${rating}. We need to work on being better than just ${ratingSlot}. Thanks again for your feedback.`;
+            break;
+          case "4":
+            speechText = `I'm so happy to hear that. On a scale of one to five we think ${ratingSlot} is a ${rating}. That tells us we're on the right track. Thanks so much for your feedback!`;
+            break;
+          case "5":
+            speechText = `Thanks so much! On a scale of one to five we think ${ratingSlot} is a ${rating}. That tells us we need to keep doing what we're doing. Thanks again for your feedback!`;
+            break;
+        }
+        //responseBuilder.reprompt("");
+      } else {
+        responseBuilder.reprompt(`Could you say that another way?`);
+      }
     }
 
     return responseBuilder

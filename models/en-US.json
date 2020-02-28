@@ -1,80 +1,105 @@
 {
-  "interactionModel": {
-      "languageModel": {
-          "invocationName": "voice ratings",
-          "intents": [
-              {
-                  "name": "AMAZON.CancelIntent",
-                  "samples": []
-              },
-              {
-                  "name": "AMAZON.HelpIntent",
-                  "samples": []
-              },
-              {
-                  "name": "AMAZON.StopIntent",
-                  "samples": []
-              },
-              {
-                  "name": "RatingIntent",
-                  "slots": [
-                      {
-                          "name": "rating",
-                          "type": "RATING"
-                      }
-                  ],
-                  "samples": [
-                      "{rating}",
-                      "I think you're doing {rating}",
-                      "I'd say you're doing {rating}"
-                  ]
-              },
-              {
-                  "name": "AMAZON.NavigateHomeIntent",
-                  "samples": []
-              }
-          ],
-          "types": [
-              {
-                  "name": "RATING",
-                  "values": [
-                      {
-                          "id": "1",
-                          "name": {
-                              "value": "poor",
-                              "synonyms": [
-                                  "awful",
-                                  "awfully",
-                                  "terrible"
-                              ]
-                          }
-                      },
-                      {
-                          "id": "2",
-                          "name": {
-                              "value": "good",
-                              "synonyms": [
-                                  "good",
-                                  "average",
-                                  "decent"
-                              ]
-                          }
-                      },
-                      {
-                          "id": "3",
-                          "name": {
-                              "value": "great",
-                              "synonyms": [
-                                  "awesome",
-                                  "fabulous",
-                                  "outstanding",
-                                  "awfully good"
-                              ]
-                          }
-                      }
-                  ]
-              }
-          ]
-      }
-  }
+    "interactionModel": {
+        "languageModel": {
+            "invocationName": "sentiment word",
+            "intents": [
+                {
+                    "name": "AMAZON.CancelIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.HelpIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.StopIntent",
+                    "samples": []
+                },
+                {
+                    "name": "RatingIntent",
+                    "slots": [
+                        {
+                            "name": "rating",
+                            "type": "RATING"
+                        }
+                    ],
+                    "samples": [
+                        "{rating}",
+                        "I think you're doing {rating}",
+                        "I'd say you're doing {rating}"
+                    ]
+                },
+                {
+                    "name": "AMAZON.NavigateHomeIntent",
+                    "samples": []
+                }
+            ],
+            "types": [
+                {
+                    "name": "RATING",
+                    "values": [
+                        {
+                            "id": "1",
+                            "name": {
+                                "value": "1",
+                                "synonyms": [
+                                    "awful",
+                                    "terrible",
+                                    "crappy"
+                                ]
+                            }
+                        },
+                        {
+                            "id": "2",
+                            "name": {
+                                "value": "2",
+                                "synonyms": [
+                                    "slow",
+                                    "disorganized",
+                                    "frustrating"
+                                ]
+                            }
+                        },
+                        {
+                            "id": "3",
+                            "name": {
+                                "value": "3",
+                                "synonyms": [
+                                    "okay",
+                                    "decent",
+                                    "acceptable",
+                                    "average"
+                                ]
+                            }
+                        },
+                        {
+                            "id": "4",
+                            "name": {
+                                "value": "4",
+                                "synonyms": [
+                                    "good",
+                                    "impressive",
+                                    "leading",
+                                    "top"
+                                ]
+                            }
+                        },
+                        {
+                            "id": "5",
+                            "name": {
+                                "value": "5",
+                                "synonyms": [
+                                    "awesome",
+                                    "fabulous",
+                                    "outstanding",
+                                    "incredible",
+                                    "best"
+                                ]
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    }
 }
