@@ -1,7 +1,7 @@
 {
-  "name": "dabblelab-entity-resolution-template",
+  "name": "17-entity-resolution-example-alexa-skill",
   "version": "1.0.0",
-  "description": "Alexa Entity Resolution Skill Template",
+  "description": "An Entity Resolution Example Skill Template for Alexa",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
